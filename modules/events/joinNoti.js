@@ -1,7 +1,7 @@
-  ﻿module.exports.config = {
-	name: "joinNoti",
+module.exports.config = {
+	name: "join",
 	eventType: ["log:subscribe"],
-	version: "1.0.3",
+	version: "1.0.1",
 	credits: "Mirai Team",
 	description: "Thông báo bot hoặc người vào nhóm",
 	dependencies: {
@@ -9,13 +9,12 @@
 	}
 };
 
-module.exports.run = async function({ api, event, Users }) {
+module.exports.run = async function({ api, event }) {
 	const { join } = global.nodemodule["path"];
 	const { threadID } = event;
 	if (event.logMessageData.addedParticipants.some(i => i.userFbId == api.getCurrentUserID())) {
-		api.changeNickname(`[ ${global.config.PREFIX} ] • ${(!global.config.BOTNAME) ? "Bot của JRT <3" : global.config.BOTNAME}`, threadID, api.getCurrentUserID());
-		return api.sendMessage(`» 𝙆𝙀𝙏 𝙉𝙊𝙄 𝙏𝙃𝘼𝙉𝙃 𝘾𝙊𝙉𝙂«\n\n◆━━━━━━━━━━━━━◆\n⚠𝓛𝓾𝓪̣̂𝓽 𝓑𝓸𝓽 𝓙𝓡𝓣\n1. Cấm spam nhiều lệnh trong 1 phút\n2. Cấm 2 bot trong 1 box (=ban)\n3. Hạn chế menu và help (nên copy lại)\n4. Thêm bot ko xin (=ban)\n5. Đừng có mà chửi bot sẽ bị ban vĩnh viễn ☠
-\n◆━━━━━━━━━━━━━◆\n📝Nhập #info admin sẽ có thông tin của adminbot\n📌Liên hệ khi cần thiết\n⚜QTV có thể dùng '#help rule' để xem hướng dẫn và set bảng luật box\n⚜Thành viên dùng '#rule' để xem luật box của mình\n◆━━━━━━━━━━━━━◆\nThis bot made by JRT. Thank you for using\nXin cảm ơn đã đọc...UwU\n© Admin: Nguyễn Hải Đăng`, threadID);
+		api.changeNickname(`[ ${global.config.PREFIX} ] • ${(!global.config.BOTNAME) ? "Made by CatalizCS and SpermLord" : global.config.BOTNAME}`, threadID, api.getCurrentUserID());
+		return api.sendMessage(`Ð𝗮̃ 𝗸𝗲̂́𝘁 𝗻𝗼̂́𝗶 𝘃𝗼̛́𝗶 𝗯𝗼𝘅 𝘁𝗵𝗮̀𝗻𝗵 𝗰𝗼̂𝗻𝗴 ! 𝗩𝘂𝗶 𝗹𝗼̀𝗻𝗴 𝘀𝘂̛̉ 𝗱𝘂̣𝗻𝗴 𝗹𝗲̣̂𝗻𝗵 -help  đ𝗲̂̉ 𝗯𝗶𝗲̂́𝘁 𝘁𝗼𝗮̀𝗻 𝗯𝗼̣̂ 𝗹𝗲̣̂𝗻𝗵 𝗰𝘂̉𝗮 𝗯𝗼𝘁\𝗻𝗖𝗮̉𝗺 𝗼𝗻 𝗯𝗮̣𝗻 𝗱𝗮̃ 𝗱𝘂̀𝗻𝗴 𝗯𝗼𝘁 𝗰𝘂̉𝗮 𝗡𝗴𝘂𝘆𝗲̂̃𝗻 𝗠𝗶𝗻𝗵 𝗧𝗿𝗶𝗲̂́𝘁, 𝗰𝗵𝘂́𝗰 𝗰𝗮́𝗰 𝗯𝗮̣𝗻 𝘀𝘂̛̉ 𝗱𝘂̣𝗻𝗴 𝗯𝗼𝘁 𝘃𝘂𝗶 𝘃𝗲̉`, threadID);
 	}
 	else {
 		try {
@@ -24,7 +23,7 @@ module.exports.run = async function({ api, event, Users }) {
 
 			const threadData = global.data.threadData.get(parseInt(threadID)) || {};
 			const path = join(__dirname, "cache", "joinGif");
-			const pathGif = join(path, `${threadID}.gif`);
+			const pathGif = join(path,`chao.mp4`);
 
 			var mentions = [], nameArray = [], memLength = [], i = 0;
 			
@@ -33,19 +32,13 @@ module.exports.run = async function({ api, event, Users }) {
 				nameArray.push(userName);
 				mentions.push({ tag: userName, id });
 				memLength.push(participantIDs.length - i++);
-
-				if (!global.data.allUserID.includes(id)) {
-					await Users.createData(id, { name: userName, data: {} });
-					global.data.allUserID.push(id);
-					logger(global.getText("handleCreateDatabase", "newUser", id), "[ DATABASE ]");
-				}
 			}
 			memLength.sort((a, b) => a - b);
 			
-			(typeof threadData.customJoin == "undefined") ? msg = "🦋Hi cậu {name}.\nChào mừng cậu đã đến với {threadName}.\n🍁Từ nay {name} sẽ là thành viên sáng giá thứ {soThanhVien} của nhóm \n✅Khi vô các cậu hãy dùng lệnh để xem luật box nhé:\n👉🏻#rule" : msg = threadData.customJoin;
+			(typeof threadData.customJoin == "undefined") ? msg = "𝙃𝙚𝙡𝙡𝙤 𝙘𝙤𝙣 𝙫𝙤̛̣ {name}. \n𝘾𝙝𝙖̀𝙤 𝙢𝙪̛̀𝙣𝙜 đ𝙖̃ đ𝙚̂́𝙣 𝙫𝙤̛́𝙞 {threadName}.\n{type} 𝙡𝙖̀ 𝙩𝙝𝙖̀𝙣𝙝 𝙫𝙞𝙚̂𝙣 𝙩𝙝𝙪̛́ {soThanhVien} 𝙘𝙪̉𝙖 𝙣𝙝𝙤́𝙢. 𝙏𝙪̛𝙤̛𝙣𝙜 𝙩𝙖́𝙘 𝙣𝙝𝙞𝙚̂̀𝙪 𝙫𝙖̀𝙤 𝙣𝙝𝙖 𝙠𝙝𝙤̂𝙣𝙜 𝙡𝙖̀ 𝙖̆𝙣 𝙠𝙞𝙘𝙠 đ𝙖̂́𝙮 ♥" : msg = threadData.customJoin;
 			msg = msg
 			.replace(/\{name}/g, nameArray.join(', '))
-			.replace(/\{type}/g, (memLength.length > 1) ?  'Các cậu' : 'Cậu')
+			.replace(/\{type}/g, (memLength.length > 1) ?  'các bạn' : 'bạn')
 			.replace(/\{soThanhVien}/g, memLength.join(', '))
 			.replace(/\{threadName}/g, threadName);
 
