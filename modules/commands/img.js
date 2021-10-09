@@ -17,7 +17,7 @@ module.exports.config = {
         "fs-extra": ""
     },
     envConfig: {
-        APIKEY: ""
+        APIKEY: "MEWQWxvdHJpdG5lO2Fsb3RyaXRuZUBnbWFpbC5"
     }
 };
 
