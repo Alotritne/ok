@@ -1,7 +1,7 @@
-const emtyArrgs = "Ná»™i dung khĂ´ng Ä‘Æ°á»£c Ä‘á»ƒ trá»‘ng"; // tin nháº¯n tráº£ vá» khi ngÆ°á»i dĂ¹ng nháº­p thiáº¿u dá»¯ liá»‡u 
-const sendWaiting = true; // báº­t hoáº·c táº¯t gá»­i tin nháº¯n "Ä‘ang táº¡o hĂ¬nh áº£nh, vui á»“ng chá» Ä‘á»£i...";
-const textWaiting = "Äang khá»Ÿi táº¡o hĂ¬nh áº£nh, vui lĂ²ng chá» Ä‘á»£i trong giĂ¢y lĂ¡t";
-const unsendWaitingWhenSucces = false; // báº­t hoáº·c táº¯t gá»¡ tin nháº¯n waiting sau khi táº¡o xong áº£nh
+jsconst emtyArrgs = "Nội dung không được để trống"; // tin nhắn trả về khi người dùng nhập thiếu dữ liệu 
+const sendWaiting = true; // bật hoặc tắt gửi tin nhắn "đang tạo hình ảnh, vui ồng chờ đợi...";
+const textWaiting = "Đang khởi tạo hình ảnh, vui lòng chờ đợi trong giây lát";
+const unsendWaitingWhenSucces = false; // bật hoặc tắt gỡ tin nhắn waiting sau khi tạo xong ảnh
 const bodyWhenSucces = "Your banner"; // 
 const XfillText = 1560;
 
@@ -10,9 +10,9 @@ module.exports.config = {
   version: "1.0.0",
   hasPermssion: 0,
   credits: "NTKhang",
-  description: "Táº¡o banner anime vá»›i tĂªn cá»§a báº¡n",
+  description: "Tạo banner anime với tên của bạn",
   commandCategory: "image",
-  usages: "<ná»™i dung>\nVĂ­ dá»¥: banneranime Procoder",
+  usages: "<nội dung>\nVí dụ: banneranime Procoder",
   cooldowns: 5
 };
 
@@ -33,7 +33,7 @@ module.exports.run = async ({ event, api, args }) => {
         writeFileSync(dir, Buffer.from(getBuffer.data));
       }
       catch(err) {
-        sendMessage("Ráº¥t tiáº¿t Ä‘Ă£ xáº£y ra lá»—i trong quĂ¡ trĂ¬nh táº£i xuá»‘ng", threadID, messageID);
+        sendMessage("Rất tiết đã xảy ra lỗi trong quá trình tải xuống", threadID, messageID);
       }
     }
   }
