@@ -16,7 +16,7 @@ module.exports.config = {
 		"axios": ""
 	},
     envConfig: {
-        APIKEY: "MEWQWxvdHJpdG5lO2Fsb3RyaXRuZUBnbWFpbC5"
+        APIKEY: ""
     }
 };
 
